@@ -59,6 +59,27 @@ class FlyingCreature(Creature):
         if target.hp < 0:
             target.hp = 0
         print(f"{target.name} HP is now {target.hp}")
+        
+class FireCreature(Creature):
+    def __init__(self, name, hp, attack_power, fire_level=0):
+        super().__init__(name, hp, attack_power)
+        self.fire_level = max(0, min(fire_level, 100))  # ตั้งค่าให้อยู่ระหว่าง 0-100
+
+    def emit_fire(self, new_fire_level):
+        self.fire_level = max(0, min(new_fire_level, 100))
+        print(f"{self.name} increases fire level to {self.fire_level}!")
+
+    def attack(self, target):
+        if not self.is_alive():
+            print(f"{self.name} cannot attack because it is defeated.")
+            return
+        
+        damage = self.attack_power + (self.fire_level // 2)  # เพิ่ม damage ตาม fire_level
+        print(f"{self.name} attacks {target.name} with fire for {damage} damage!")
+        target.hp -= damage
+        if target.hp < 0:
+            target.hp = 0
+        print(f"{target.name} HP is now {target.hp}")
 
 if __name__ == "__main__":
     print("=== Creature Class Tests ===\n")
@@ -121,7 +142,8 @@ if __name__ == "__main__":
     print(f"Dummy HP should be 33 → Actual: {dummy.hp}")
     print()
     print("=== Tests Completed ===")
-
+    print()
+    
     print("=== FlyingCreature Tests ===\n")
     hawk = FlyingCreature("Sky Hawk", 50, 8)
     hawk.fly_to(120)
@@ -135,3 +157,19 @@ if __name__ == "__main__":
     print("=== Tests Completed ===")
     print()
 
+    print("=== FireCreature Tests ===\n")
+
+    blaze = FireCreature("Blazefang", 45, 8, 20)
+    dummy = Creature("Practice Dummy", 40, 0)
+
+    print("Initial Fire Level:", blaze.fire_level)
+    blaze.emit_fire(50)
+    blaze.attack(dummy)
+
+    print("Testing over max fire level:")
+    blaze.emit_fire(150)
+    blaze.attack(dummy)
+
+    print("Testing dead FireCreature cannot attack:")
+    blaze.hp = 0
+    blaze.attack(dummy)
