@@ -38,6 +38,27 @@ class SwimmingCreature(Creature):
         if target.hp < 0:
             target.hp = 0
         print(f"{target.name} HP is now {target.hp}")
+        
+class FlyingCreature(Creature):
+    def __init__(self, name, hp, attack_power):
+        super().__init__(name, hp, attack_power)
+        self.altitude = 0
+
+    def fly_to(self, new_altitude):
+        self.altitude = new_altitude
+        print(f"{self.name} flies to altitude {self.altitude} meters.")
+
+    def attack(self, target):
+        if not self.is_alive():
+            print(f"{self.name} cannot attack because it is defeated.")
+            return
+
+        print(f"{self.name} swoops down from altitude {self.altitude}!")
+        print(f"{self.name} performs an aerial attack on {target.name} for {self.attack_power} damage!")
+        target.hp -= self.attack_power
+        if target.hp < 0:
+            target.hp = 0
+        print(f"{target.name} HP is now {target.hp}")
 
 if __name__ == "__main__":
     print("=== Creature Class Tests ===\n")
@@ -100,3 +121,17 @@ if __name__ == "__main__":
     print(f"Dummy HP should be 33 → Actual: {dummy.hp}")
     print()
     print("=== Tests Completed ===")
+
+    print("=== FlyingCreature Tests ===\n")
+    hawk = FlyingCreature("Sky Hawk", 50, 8)
+    hawk.fly_to(120)
+    print(f"Altitude should be 120 → Actual: {hawk.altitude}")
+
+    dummy = Creature("Practice Dummy", 40, 0)
+    hawk.attack(dummy)
+    print(f"Dummy HP should be 32 → Actual: {dummy.hp}")
+    dummy.attack(hawk)
+    print()
+    print("=== Tests Completed ===")
+    print()
+
