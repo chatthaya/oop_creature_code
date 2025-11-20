@@ -1,0 +1,23 @@
+* [33mcommit 7045ac1e70c6d20babd78c388f296be2c45ce694[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+[31m|[m Author: chatthaya <chatthaya.t@ku.th>
+[31m|[m Date:   Thu Nov 20 02:34:23 2025 +0700
+[31m|[m 
+[31m|[m     Add SwimmingCreature
+[31m|[m   
+[31m|[m * [33mcommit b7cab0f05ce69bbf8379a77a60eeae441881cfc5[m[33m ([m[1;32mflying_creature[m[33m)[m
+[31m|[m[31m/[m  Author: chatthaya <chatthaya.t@ku.th>
+[31m|[m   Date:   Thu Nov 20 02:18:19 2025 +0700
+[31m|[m   
+[31m|[m       Add FlyingCreature
+[31m|[m 
+* [33mcommit f4b0dada9b3689da1a847cdeb172dfe7e7975783[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mswimming_creature[m[33m)[m
+[32m|[m Author: chatthaya <chatthaya.t@ku.th>
+[32m|[m Date:   Thu Nov 20 02:12:46 2025 +0700
+[32m|[m 
+[32m|[m     Add base Creature class
+[32m|[m 
+* [33mcommit 5734d224bcc06aeee64888367a0b60ad45be720f[m
+  Author: chatthaya <chatthaya.t@ku.th>
+  Date:   Thu Nov 20 01:59:34 2025 +0700
+  
+      Add base Creature class

@@ -63,7 +63,7 @@ class FlyingCreature(Creature):
 class FireCreature(Creature):
     def __init__(self, name, hp, attack_power, fire_level=0):
         super().__init__(name, hp, attack_power)
-        self.fire_level = max(0, min(fire_level, 100))  # ตั้งค่าให้อยู่ระหว่าง 0-100
+        self.fire_level = max(0, min(fire_level, 100))
 
     def emit_fire(self, new_fire_level):
         self.fire_level = max(0, min(new_fire_level, 100))
@@ -74,7 +74,7 @@ class FireCreature(Creature):
             print(f"{self.name} cannot attack because it is defeated.")
             return
         
-        damage = self.attack_power + (self.fire_level // 2)  # เพิ่ม damage ตาม fire_level
+        damage = self.attack_power + (self.fire_level // 2)
         print(f"{self.name} attacks {target.name} with fire for {damage} damage!")
         target.hp -= damage
         if target.hp < 0:
@@ -173,3 +173,5 @@ if __name__ == "__main__":
     print("Testing dead FireCreature cannot attack:")
     blaze.hp = 0
     blaze.attack(dummy)
+    print()
+    print("=== Tests Completed ===")
